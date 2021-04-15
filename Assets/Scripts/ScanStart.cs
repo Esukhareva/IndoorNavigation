@@ -14,6 +14,7 @@ public class ScanStart : MonoBehaviour
     private WebCamTexture backCam; //used to obtain video from device camera
     private Texture defaultBackground;
 
+    public GameObject scanPanel;
     public RawImage background; //where to render to
     public AspectRatioFitter fit; //fit rendered view to screen
     public ImageRecognizer imgRec; //object used to access method for setting location 
@@ -72,6 +73,7 @@ public class ScanStart : MonoBehaviour
             arDevice.GetComponent<ARCoreSession>().enabled = true;
             background.gameObject.SetActive(false);
             this.gameObject.SetActive(false);
+            scanPanel.SetActive(false);
         }
     }
 }
