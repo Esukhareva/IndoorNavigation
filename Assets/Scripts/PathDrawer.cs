@@ -6,14 +6,16 @@ using UnityEngine.UI;
 
 public class PathDrawer : MonoBehaviour
 {
-    //public GameObject trigger; // trigger to spawn and despawn AR arrows
-    public Transform[] destinations; // list of destination positions
+    public GameObject trigger; // trigger to spawn and despawn AR arrows
     public Transform target; //current chosen destination
     public GameObject person; //person indicator
     public Text text; //information text box
 
     public Dropdown dropdown; //dropdown of destinations
 
+    public GameObject destinationLocations;
+
+    private Dictionary<int, Transform> destinationMap;
     private NavMeshPath path; //current calculated path
     private LineRenderer line; //line renderer to display path
 
@@ -24,18 +26,22 @@ public class PathDrawer : MonoBehaviour
     {
         path = new NavMeshPath();
         line = transform.GetComponent<LineRenderer>();
+        destinationMap = new Dictionary<int, Transform>();
         FillDropDown();
         destinationSet = false;
-        
     }
 
     private void FillDropDown()
     {
         List<string> aList = new List<string>();
         aList.Add("Choose a destination..");
-        foreach (Transform dest in destinations) 
+
+        int i = 0;
+        foreach (Transform dest in destinationLocations.transform) 
         {
+            destinationMap.Add(i, dest);
             aList.Add(dest.name);
+            i++;
         }
         dropdown.AddOptions(aList);
     }
@@ -66,13 +72,18 @@ public class PathDrawer : MonoBehaviour
     //set current destination and create a trigger for showing AR arrows
     public void setDestination(int index) 
     {
-        target = destinations[index];
-        //GameObject.Instantiate(trigger, person.transform.position, person.transform.rotation);
+        //if (!destinationMap.TryGetValue(thePlaceName, out target))
+        //{
+        //    text.text = "Something went wrong :^(";
+        //}
+        target = destinationMap[index];
+        GameObject.Instantiate(trigger, person.transform.position, person.transform.rotation);
     }
 
     //dropdown listener
     public void DropDownIndexChanged(int index) 
     {
+
         if (index == 0 && !destinationSet)
         {
             target = null;
@@ -83,7 +94,7 @@ public class PathDrawer : MonoBehaviour
         {
             if (destinationSet)
             {
-                //RemoveArrowAndCollider();
+                RemoveArrowAndCollider();
                 setDestination(index);
             }
             else 
@@ -106,14 +117,14 @@ public class PathDrawer : MonoBehaviour
         dropdown.ClearOptions();
         FillDropDown();
         dropdown.SetValueWithoutNotify(0);
-        //RemoveArrowAndCollider();
+        RemoveArrowAndCollider();
         destinationSet = false;
     }
 
-    // remove AR arrow when path is cleared
-    //private void RemoveArrowAndCollider()
-    //{
-    //    Destroy(GameObject.Find("NavTrigger(Clone)"));
-    //    Destroy(GameObject.Find("Anchor"));
-    //}
+    //remove AR arrow when path is cleared
+    private void RemoveArrowAndCollider()
+    {
+        Destroy(GameObject.Find("NavTrigger(Clone)"));
+        Destroy(GameObject.Find("Anchor"));
+    }
 }
