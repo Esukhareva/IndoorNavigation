@@ -34,7 +34,7 @@ public class PathDrawer : MonoBehaviour
     private void FillDropDown()
     {
         List<string> aList = new List<string>();
-        aList.Add("Choose a destination..");
+        aList.Add("Выберите местоназначение..");
 
         int i = 0;
         foreach (Transform dest in destinationLocations.transform) 
@@ -56,7 +56,7 @@ public class PathDrawer : MonoBehaviour
 
             if (path.corners.Length == 0)
             {
-                text.text = "Try moving away for obstacles";
+                text.text = "Вы находитесь в зоне препятствия";
             }
             else 
             {

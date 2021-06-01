@@ -14,6 +14,7 @@ public class ImageRecognizer : MonoBehaviour
     public GameObject calibrationLocations; // transforms with calibration positions
     public GameObject personPointer; // person indicator
     public GameObject controller; // indoornavcontroller object
+    public GameObject arDevice; //ARCore device gameobject
 
     private bool searchingForMarker = false; // bool to say if looking for marker
     private bool first = true; // bool to fix multiple scan findings
@@ -39,7 +40,7 @@ public class ImageRecognizer : MonoBehaviour
     }
 
     //move the person indicator to the new spot
-    private void Relocate(string text)
+    public void Relocate(string text)
     {
         text = text.Trim(); //remove spaces
                             //find the correct location scanned and move the person to its position

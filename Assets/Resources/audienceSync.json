@@ -1,0 +1,16 @@
+{
+  "Audiences": [
+    {
+      "audienceNumber": "6445",
+      "aGameObject": "StartAnchor"
+    },
+    {
+      "audienceNumber": "6446",
+      "aGameObject": "SixFourFourSix"
+    },
+    {
+      "audienceNumber": "6447",
+      "aGameObject": "SixFourFourSeven"
+    }
+  ]
+}
