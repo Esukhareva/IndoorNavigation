@@ -40,7 +40,7 @@ public class FollowTarget : MonoBehaviour
                 minimap.gameObject.SetActive(false);
                 texture = fullscreenCamera.targetTexture;
                 fullscreenCamera.targetTexture = null;
-                fullscreenCamera.orthographicSize = 15;
+                fullscreenCamera.orthographicSize = 20;
                 scanButton.SetActive(false);
                 switchButton.SetActive(false);
             }
@@ -54,7 +54,7 @@ public class FollowTarget : MonoBehaviour
                 gameObject.GetComponent<Camera>().enabled = true;
                 minimap.gameObject.SetActive(true);
                 fullscreenCamera.targetTexture = texture;
-                fullscreenCamera.orthographicSize = 5;
+                fullscreenCamera.orthographicSize = 10;
                 scanButton.SetActive(true);
                 switchButton.SetActive(true);
             }
@@ -84,7 +84,7 @@ public class FollowTarget : MonoBehaviour
             minimap.gameObject.SetActive(false);
             texture = fullscreenCamera.targetTexture;
             fullscreenCamera.targetTexture = null;
-            fullscreenCamera.orthographicSize = 15;
+            fullscreenCamera.orthographicSize = 20;
             scanButton.SetActive(false);
         }
         else
@@ -94,7 +94,7 @@ public class FollowTarget : MonoBehaviour
             gameObject.GetComponent<Camera>().enabled = true;
             minimap.gameObject.SetActive(true);
             fullscreenCamera.targetTexture = texture;
-            fullscreenCamera.orthographicSize = 5;
+            fullscreenCamera.orthographicSize = 10;
             scanButton.SetActive(true);
         }
     }

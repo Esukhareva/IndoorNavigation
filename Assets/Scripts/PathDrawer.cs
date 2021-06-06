@@ -34,7 +34,7 @@ public class PathDrawer : MonoBehaviour
     private void FillDropDown()
     {
         List<string> aList = new List<string>();
-        aList.Add("Выберите местоназначение..");
+        aList.Add("Выберите аудиторию..");
 
         int i = 0;
         foreach (Transform dest in destinationLocations.transform) 
