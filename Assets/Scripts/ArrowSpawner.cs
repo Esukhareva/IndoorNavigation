@@ -76,8 +76,7 @@ public class ArrowSpawner : MonoBehaviour
             Quaternion rot = arcoreDeviceCam.transform.rotation;
             anchor = Session.CreateAnchor(new Pose(pos, rot));
             GameObject.Instantiate(pin, anchor.transform.position, anchor.transform.rotation, anchor.transform);
-            Debug.Log("Arrived at " + other.name);
-            //GameObject.Instantiate(trigger, this.transform.position, this.transform.rotation);
+            text.text = "Arrived at " + other.name;
         }
         // show calibration text nearby calibration points
         if (other.tag.Equals("calibration"))
